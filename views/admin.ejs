@@ -3,25 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/style.css">
     <title>playlist music</title>
 </head>
 <body>
-    <h1>Cadastre uma nova Música</h1>
 
-    <form action="/create" method="POST">
-        <label for="name">nome:</label>
-        <input type="text" name="name" id=name">
+    <nav>
+        <ul>
+            <li>
+                <a href="/"><img src="/img/logoblue.png" alt="Logo da Blue"></a>
+            </li>
+            <li>
+                <a href="/"><i class="bi bi-box-arrow-right    "></i></a> 
+            </li>
+        </ul>
+    </nav>
 
-        <label for="author">autor:</label>
-        <input type="text" name="author" id=author">
+    <section id="add">
+        <h2>Cadastre uma nova Música</h2>
 
-        <label for="linkImage">link da Image:</label>
-        <input type="text" name="linkImage" id=linkImage">
+        <form action="/create" method="POST">
+            <label for="name">nome:</label>
+            <input type="text" name="name" id=name">
+    
+            <label for="author">autor:</label>
+            <input type="text" name="author" id=author">
+    
+            <label for="linkImage">link da imagem:</label>
+            <input type="text" name="linkImage" id=linkImage">
+    
+            <label for="linkMusic">link da música</label>
+            <input type="text" name="linkMusic" id=linkMusic">
+    
+            <button type="submit">cadastrar</button>
+        </form>
+    </section>
 
-        <label for="linkMusic">link da Música</label>
-        <input type="text" name="linkMusic" id=linkMusic">
+    <section id="player">
+        <h2>gerenciar musicas</h2>
 
-        <button type="submit">cadastrars</button>
-    </form>
+        <div>
+            <table>
+
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Nome</th>
+                        <th>Artista</th>
+                        <th>ações</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <% playlist.forEach((music)=> { %>
+                        <tr class="musics">
+                            <td><img src="<%= music.linkImage %>" alt="Imagem da musica"></td>
+                            <td>
+                                <%= music.name %>
+                            </td>
+                            <td>
+                                <%= music.author %>
+                            </td>
+                            <td id="actions">
+                                <a href="" id="edit">editar</a>
+                                <a href="" id="delete">apagar</a>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+
+            </table>
+        </div>
+    </section>
 </body>
 </html>
