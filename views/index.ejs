@@ -7,7 +7,17 @@
 </head>
 <body>
     <h1>Olá EJS</h1>
-
     <a href="/admin">adm</a>
+
+        <% playlist.forEach((music) => { %>
+    
+        <section>
+            <h2> <%= music.name %> </h2>
+            <p> <%= music.author %> </p>
+            <img src="<%= music.linkImage %>" alt="logo da música">
+            <audio controls src="<%= music.linkMusic %>"></audio>
+        </section>
+
+        <% }) %>
 </body>
 </html>
